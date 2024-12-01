@@ -1,12 +1,15 @@
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 class MainTest {
 
     @Test
     void isContentFileNotNull() throws IOException {
-        assert Main.readTheFile() != null;
+        assertThat(Main.readTheFile(), CoreMatchers.notNullValue());
     }
 
     @Test
