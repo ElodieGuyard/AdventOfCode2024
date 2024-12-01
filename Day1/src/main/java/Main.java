@@ -27,12 +27,13 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        String pathFile = "src/main/resources/input.txt";
         List<Integer> leftClmNumbers = new ArrayList();
         List<Integer> rightClmNumbers = new ArrayList();
         List<Integer> subNumbers = new ArrayList();
         Integer sumNumbers = 0;
 
-        List<String> linePerLine = readTheFile(); //lire le fichier et le mettre dans une liste
+        List<String> linePerLine = readTheFile(pathFile); //lire le fichier et le mettre dans une liste
         parseOurDatas(linePerLine, leftClmNumbers, rightClmNumbers);
         sortMyList(leftClmNumbers, rightClmNumbers);
         substractIds(leftClmNumbers, rightClmNumbers, subNumbers);
@@ -41,10 +42,10 @@ public class Main {
 
     }
 
-    public static List<String> readTheFile() throws IOException {
+    public static List<String> readTheFile(String pathFile) throws IOException {
 
         try {
-            Path path = Paths.get("src/main/resources/input.txt");
+            Path path = Paths.get(pathFile);
             Stream<String> streamWithCharset = Files.lines(path, Charset.forName("UTF-8")); //Précise l'encodage
             List <String> linePerLine = streamWithCharset.toList();
             //System.out.println(linePerLine);
